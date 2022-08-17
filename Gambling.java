@@ -30,22 +30,31 @@ public class Gambling {
 		int wins = 0;
 		int loose = 0;
 		boolean status = false;
+	    int totalWins = 0;
+        int totalLoose = 0;
+        
+		 for(int day=1; day<=20; day++){      
 		 for(int i=1; i<=stake; i++){
 	            int check = checkWinOrLose();
 	            if(check == 1){
 	                wins++;
+	                totalWins++;
 	                if(wins == 50){
+	                	wins = 0;
 	                    status = true;
 	                    System.out.println("Win by 50%");
 	                }
-	            }else {
-	                loose++;
-	                if (loose == 50){
-	                    status = false;
-	                    System.out.println("Loose by 50%");
+	            	}else if (loose == 50){
+	            	loose = 0;
+	                status = false;
+	                System.out.println("Loose by 50%");
 	                }
-	            }
-	        }
+		 		
+		 		else {
+		 			loose++;
+		 			totalLoose++;
+		 			}
+		 }
 	        if (status){
 	            System.out.println("Win stake="+(stake+wins));
 	        }
@@ -53,5 +62,6 @@ public class Gambling {
 	        {
 	            System.out.println("Loose stake= "+(stake-loose));
 	        }
+	}
 	}
 }
