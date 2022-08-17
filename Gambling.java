@@ -13,18 +13,45 @@ public class Gambling {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Gambling Program");
 		
-		// UC1_Stake
-		System.out.println("Stake" +stake+ "$");
-		System.out.println("bet" +bet+ "$");
-		//UC2_Win or loose
-		int check = checkWinOrLose();
-	        if(check == 1){
-	            System.out.println("bet wins");
+//		// UC1_Stake
+//		System.out.println("Stake" +stake+ "$");
+//		System.out.println("bet" +bet+ "$");
+//		//UC2_Win or loose
+//		int check = checkWinOrLose();
+//	        if(check == 1){
+//	            System.out.println("bet wins");
+//	        }
+//	        else
+//	        {
+//	            System.out.println("bet loose");
+//	        }
+//		}
+		//UC3_Calculate 50 % stake
+		int wins = 0;
+		int loose = 0;
+		boolean status = false;
+		 for(int i=1; i<=stake; i++){
+	            int check = checkWinOrLose();
+	            if(check == 1){
+	                wins++;
+	                if(wins == 50){
+	                    status = true;
+	                    System.out.println("Win by 50%");
+	                }
+	            }else {
+	                loose++;
+	                if (loose == 50){
+	                    status = false;
+	                    System.out.println("Loose by 50%");
+	                }
+	            }
+	        }
+	        if (status){
+	            System.out.println("Win stake="+(stake+wins));
 	        }
 	        else
 	        {
-	            System.out.println("bet loose");
+	            System.out.println("Loose stake= "+(stake-loose));
 	        }
 	}
-
 }
